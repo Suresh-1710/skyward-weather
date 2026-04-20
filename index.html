@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyward - Weather Forecast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Parallax Background layers -->
+    <div id="parallax-bg">
+        <div class="layer layer-sky" id="layer-sky"></div>
+        <div class="layer layer-sun-moon" id="layer-sun-moon"></div>
+        <div class="layer layer-clouds-back" id="layer-clouds-back"></div>
+        <div class="layer layer-rain" id="layer-rain"></div>
+        <div class="layer layer-clouds-front" id="layer-clouds-front"></div>
+    </div>
+
+    <div class="container main-content">
+        <!-- Header -->
+        <header class="glass-panel">
+            <h1 class="logo">⛅ SKYWARD</h1>
+            <div class="header-controls">
+                <button class="btn-ripple icon-btn" id="themeToggle" aria-label="Toggle theme">
+                    <span id="themeIcon">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Search Section -->
+        <main>
+            <section class="search-section glass-panel">
+                <div class="search-box">
+                    <input type="text" id="cityInput" placeholder="Enter city name (e.g., Tokyo, Paris)...">
+                    <button class="btn-ripple primary-btn" id="searchBtn">
+                        <span class="icon">🔍</span> <span class="btn-text">Search</span>
+                    </button>
+                    <button class="btn-ripple secondary-btn icon-btn" id="geolocateBtn" aria-label="Use My Location">
+                        <span>📍</span>
+                    </button>
+                </div>
+                <div id="messageContainer"></div>
+            </section>
+
+            <!-- Loading -->
+            <div id="loadingState" class="glass-panel text-center hidden">
+                <div class="loader"></div>
+                <p>Consulting the skies...</p>
+            </div>
+
+            <!-- Dashboard -->
+            <section id="weatherContent" class="hidden">
+                <div class="current-weather glass-panel">
+                    <div class="weather-top">
+                        <div class="weather-titles">
+                            <h2 id="locationName">New York</h2>
+                            <p id="lastUpdated">Updated 10:00 AM</p>
+                        </div>
+                        <div class="weather-main-icon" id="weatherIcon">☀️</div>
+                    </div>
+                    <div class="temperature-block">
+                        <h1 class="temp" id="temperature">24°C</h1>
+                        <p class="desc" id="description">Clear Sky</p>
+                        <p class="feels" id="feelsLike">Feels like 26°C</p>
+                    </div>
+                    <div class="weather-details">
+                        <div class="detail-box">
+                            <span class="label">Humidity</span>
+                            <span class="value" id="humidity">45%</span>
+                        </div>
+                        <div class="detail-box">
+                            <span class="label">Wind</span>
+                            <span class="value" id="windSpeed">5 m/s</span>
+                        </div>
+                        <div class="detail-box">
+                            <span class="label">Min Temp</span>
+                            <span class="value" id="minTemp">18°C</span>
+                        </div>
+                        <div class="detail-box">
+                            <span class="label">Max Temp</span>
+                            <span class="value" id="maxTemp">28°C</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="forecast-section">
+                    <h3 class="glass-heading">5-Day Forecast</h3>
+                    <div class="forecast-grid" id="forecastGrid">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- No Data Start -->
+            <div id="noData" class="glass-panel text-center no-data">
+                <div class="globe-spinner">🌍</div>
+                <h2>Explore the weather</h2>
+                <p>Search for a city or use your location to get started.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
